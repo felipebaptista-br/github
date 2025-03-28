@@ -1,6 +1,7 @@
 'use client'
 
 import React, {
+  useCallback,
   useEffect,
   useState
 } from "react"
@@ -63,7 +64,7 @@ export default function AuthForm({ code }: AuthFormProps) {
     }
   }
 
-  const onSubmitOAuth = async (code: string) => {
+  const onSubmitOAuth = useCallback(async (code: string) => {
     try {
       const response = await oAuthByCode({ code })
       console.log(response)
@@ -84,7 +85,7 @@ export default function AuthForm({ code }: AuthFormProps) {
       // => Alterando a rota para remover o componente de modal
       router.push('/auth')
     }
-  }
+  }, [router])
 
   // => Função para identificar um Token ao digitar
   const getTokenType = (token: string): TypeToken | null => {
@@ -101,8 +102,11 @@ export default function AuthForm({ code }: AuthFormProps) {
   useEffect(() => {
     // => Caso receber um code por parâmetro, significa que existe um callBack de autênticação do GitHub
     // => Nesse caso, vamos chamar o submit do OAuth enviando o parâmetro e receber um Token
-    if (code) { setIsSubmit(true), onSubmitOAuth(code) }
-  }, [])
+    if (code) {
+      setIsSubmit(true)
+      onSubmitOAuth(code)
+    }
+  }, [code, onSubmitOAuth])
 
   useEffect(() => {
     // => Sincroniza o valor do input ao mudar manualmente o tipo no select
