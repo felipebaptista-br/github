@@ -44,6 +44,7 @@ export default function AuthForm({ code }: AuthFormProps) {
     setIsSubmit(true)
     try {
       const response: AuthGitHubUser = await authByAccessToken({ accessToken })
+      console.log(response)
       // => Retornando ao usuário um alerta
       toast.success('Autenticação realizada com sucesso', {
         description: 'Redirecionamento iniciado...'
@@ -51,6 +52,7 @@ export default function AuthForm({ code }: AuthFormProps) {
       // => Redirecionando o usuário para a tela autenticado
       router.push('/')
     } catch (error) {
+      console.log(error)
       // => Retornando ao usuário um alerta
       toast.error('Access-Token inválido.', {
         description: 'Tente logar usando outro Access-Token ou acesse diretamente usando o GitHub. Se precisar de ajuda, use a opção: Não sei onde encontrar meu access-token.'
@@ -64,6 +66,7 @@ export default function AuthForm({ code }: AuthFormProps) {
   const onSubmitOAuth = async (code: string) => {
     try {
       const response = await oAuthByCode({ code })
+      console.log(response)
       // => Retornando ao usuário um alerta
       toast.success('Autenticação realizada com sucesso', {
         description: 'Redirecionamento iniciado...'
@@ -71,6 +74,7 @@ export default function AuthForm({ code }: AuthFormProps) {
       // => Redirecionando o usuário para a tela autenticado
       router.push('/')
     } catch (error) {
+      console.log(error)
       // => Retornando ao usuário um alerta
       toast.error('Não foi possível logar usando o GitHub.', {
         description: 'Tente novamente ou use um Access-Token diretamente no campo para acessar.'
