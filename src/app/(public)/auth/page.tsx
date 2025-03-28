@@ -6,15 +6,13 @@ import { ModeToggle } from "@/components/ui/mode-toggle"
 import { version } from "@/version"
 import { Badge } from "@/components/ui/badge"
 
-interface AuthProps {
-  searchParams: {
-    code?: string
-  }
-}
+type AuthParamsProps = Promise<{ code: string }>
 
-export default async function Auth({ searchParams }: AuthProps) {
+export default async function Auth(props: {
+  searchParams: AuthParamsProps
+}) {
   // => Recebendo o callback de autenticação com Github
-  const code = searchParams.code
+  const { code } = await props.searchParams
 
   return (
     <div className="h-screen w-screen flex">
