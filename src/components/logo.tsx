@@ -16,14 +16,14 @@ export default function Logo({ size = 25, mode = 'default' }: LogoProps) {
         style={{
           color: mode === 'dark' ? 'black' : mode === 'light' ? 'white' : ''
         }}
-        className="animate-bounce"
+        className="animate-pulse select-none"
       />
       <h1
         style={{
           fontSize: size,
           color: mode === 'dark' ? 'black' : mode === 'light' ? 'white' : ''
         }}
-        className="font-semibold"
+        className="font-semibold select-none"
       >
         GitHub
       </h1>
