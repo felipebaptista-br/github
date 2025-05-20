@@ -8,9 +8,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 
-interface FormGitHubUserProps extends HTMLAttributes<HTMLDivElement> { }
-
-export default function FormGitHubUser({ className, ...props }: FormGitHubUserProps) {
+export default function FormGitHubUser({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   const router = useRouter()
   // => Variável de contole de estado do input
   const [username, setUsername] = useState<string>('')
