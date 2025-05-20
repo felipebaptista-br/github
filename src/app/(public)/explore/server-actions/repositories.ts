@@ -1,7 +1,5 @@
 "use server"
 
-import { GitHubUserRepo } from "@/@types/repositories"
-
 interface getUserRepositoriesByUsernameProps {
   username: string
 }
