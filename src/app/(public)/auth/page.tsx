@@ -38,11 +38,13 @@ import { version } from "@/version"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
+type AuthParamsProps = Promise<{ code: string }>
+
 export default async function Auth(props: {
-  searchParams: { code: string }
+  searchParams: AuthParamsProps
 }) {
   // => Recebendo o callback de autenticação com Github
-  const { code } = props.searchParams
+  const { code } = await props.searchParams
 
   return (
     <div className="h-screen w-screen flex">
