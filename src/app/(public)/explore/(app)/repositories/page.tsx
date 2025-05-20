@@ -21,12 +21,14 @@ import Maintance from "@/components/layout/maintance"
 import Logo from "@/components/logo"
 // import Link from "next/link"
 
-export default async function ExploreRepositories(props: {
-  searchParams: { username: string }
+export default async function ExploreRepositories({
+  searchParams,
+}: {
+  searchParams: { username?: string }
 }) {
   try {
     // => Recuperando o user-name pelos parâmetros da url
-    const { username } = props.searchParams
+    const { username } = searchParams
     // => Caso não haja user-name, retornaremos para a página de busca de user-name
     if (!username) { redirect('/explore') }
 
