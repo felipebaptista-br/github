@@ -28,7 +28,7 @@ export default async function ExploreRepositories({
 }) {
   try {
     // => Recuperando o user-name pelos parâmetros da url
-    const { username } = searchParams
+    const username = searchParams?.username
     // => Caso não haja user-name, retornaremos para a página de busca de user-name
     if (!username) { redirect('/explore') }
 
