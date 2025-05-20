@@ -21,17 +21,17 @@ import Maintance from "@/components/layout/maintance"
 import Logo from "@/components/logo"
 // import Link from "next/link"
 
-export default async function ExploreRepositories({
-  searchParams,
-}: {
+interface ExploreRepositoriesProps {
   searchParams: { username?: string }
-}) {
-  try {
-    // => Recuperando o user-name pelos parâmetros da url
-    const username: string | undefined = searchParams?.username
-    // => Caso não haja user-name, retornaremos para a página de busca de user-name
-    if (!username) { redirect('/explore') }
+}
 
+export default async function ExploreRepositories({ searchParams }: ExploreRepositoriesProps) {
+  // => Recuperando o user-name pelos parâmetros da url
+  const username: string | undefined = searchParams?.username
+  // => Caso não haja user-name, retornaremos para a página de busca de user-name
+  if (!username) { redirect('/explore') }
+
+  try {
     // => Fazendo as requisições para a API do GitHub
     const user: GitHubUser = await getUserByGithubUsername({ username })
     // const repos: GitHubUserRepo[] | [] = await getUserRepositoriesByUsername({ username })
