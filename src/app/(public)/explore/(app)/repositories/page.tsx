@@ -1,8 +1,8 @@
 import React from "react"
-import { getUserRepositoriesByUsername } from "../../server-actions/repositories"
+// import { getUserRepositoriesByUsername } from "../../server-actions/repositories"
 import { getUserTopLanguagesByUsername } from "../../server-actions/languages"
 import { getUserByGithubUsername } from "../../server-actions/user"
-import { GitHubUserRepo } from "@/@types/repositories"
+// import { GitHubUserRepo } from "@/@types/repositories"
 import { ModeToggle } from "@/components/ui/mode-toggle"
 import { GitHubUser } from "@/@types/user"
 // import { RepoCard } from "@/components/layout/repos-card"
@@ -34,7 +34,7 @@ export default async function ExploreRepositories(props: {
 
     // => Fazendo as requisições para a API do GitHub
     const user: GitHubUser = await getUserByGithubUsername({ username })
-    const repos: GitHubUserRepo[] | [] = await getUserRepositoriesByUsername({ username })
+    // const repos: GitHubUserRepo[] | [] = await getUserRepositoriesByUsername({ username })
     const langs: string[] = await getUserTopLanguagesByUsername({ username })
 
     // => Renderizando caso o usuário seja encontrado

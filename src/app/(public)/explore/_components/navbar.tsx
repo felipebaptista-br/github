@@ -15,7 +15,7 @@ interface NavBarProviderProps {
   name?: string
 }
 
-export function NavBar({ isAuthenticated = false, name }: NavBarProviderProps) {
+export function NavBar({  }: NavBarProviderProps) {
 
   return (
     <nav className="absolute top-0 w-screen h-28 flex items-center justify-end px-24">

@@ -2,7 +2,6 @@ import React from "react"
 import {
   Card,
   CardTitle,
-  CardHeader,
   CardContent
 } from "@/components/ui/card"
 import {
@@ -13,11 +12,9 @@ import {
 import {
   Globe,
   MapPin,
-  Github,
   UserPlus
 } from "lucide-react"
 import { GitHubUser } from "@/@types/user"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
 interface UserGitHubCardProps {
