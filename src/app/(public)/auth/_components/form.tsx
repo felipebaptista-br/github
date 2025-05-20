@@ -15,7 +15,6 @@ import {
 import { authByAccessToken } from "../server-actions/auth"
 import { useTokenValidation } from "@/hooks/use-token-validation"
 import { Github, Loader2 } from "lucide-react"
-import { AuthGitHubUser } from "@/@types/auth"
 import { oAuthByCode } from "../server-actions/oauth"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -44,8 +43,7 @@ export default function AuthForm({ code }: AuthFormProps) {
   const onSubmitAuth = async () => {
     setIsSubmit(true)
     try {
-      const response: AuthGitHubUser = await authByAccessToken({ accessToken })
-      console.log(response)
+      await authByAccessToken({ accessToken })
       // => Retornando ao usuário um alerta
       toast.success('Autenticação realizada com sucesso', {
         description: 'Redirecionamento iniciado...'
@@ -66,8 +64,7 @@ export default function AuthForm({ code }: AuthFormProps) {
 
   const onSubmitOAuth = useCallback(async (code: string) => {
     try {
-      const response = await oAuthByCode({ code })
-      console.log(response)
+      await oAuthByCode({ code })
       // => Retornando ao usuário um alerta
       toast.success('Autenticação realizada com sucesso', {
         description: 'Redirecionamento iniciado...'

@@ -1,10 +1,10 @@
 import React from "react"
+import DotLottieAnimation from "@/components/dot-lottie-animation"
 import Footer from "./_components/footer"
 import NavBar from "./_components/navbar"
 import Image from "next/image"
 import Wave from "@/assets/wave-1.svg"
 import Link from "next/link"
-import DotLottieAnimation from "./_components/dot-lottie-animation"
 import {
   Accordion,
   AccordionContent,

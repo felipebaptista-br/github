@@ -5,10 +5,9 @@ import { ModeToggle } from "@/components/ui/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { MoveRight } from "lucide-react"
 
-
 export default function NavBar() {
   return (
-    <div className="w-screen h-16 fixed flex items-center justify-between px-32 bg-blue-950 shadow dark:shadow-neutral-600 dark:bg-neutral-950 z-20">
+    <nav className="w-screen h-16 fixed flex items-center justify-between px-32 bg-blue-950 shadow dark:shadow-neutral-600 dark:bg-neutral-950 z-20">
       <Logo mode="light" size={20} />
       <div className="w-auto flex items-center gap-3">
         <ModeToggle />
@@ -21,6 +20,6 @@ export default function NavBar() {
           </Link>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }

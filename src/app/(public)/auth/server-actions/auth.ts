@@ -7,7 +7,8 @@ interface AuthByAccessTokenProps {
 }
 
 export async function authByAccessToken({ accessToken }: AuthByAccessTokenProps): Promise<AuthGitHubUser> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_URL}/user`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_WEB_URL}/user`, {
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${accessToken}`,
       Accept: 'application/vnd.github+json'

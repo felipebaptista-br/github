@@ -3,7 +3,7 @@
 import React from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
-interface DotLottieAnimationProps{
+interface DotLottieAnimationProps {
   url: string
 }
 

@@ -7,7 +7,7 @@ interface oAuthByCodeProps {
 }
 
 export async function oAuthByCode({ code }: oAuthByCodeProps): Promise<AuthGitHubUser> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_URL}/login/oauth/access_token`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_WEB_URL}/login/oauth/access_token`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -17,7 +17,7 @@ export async function oAuthByCode({ code }: oAuthByCodeProps): Promise<AuthGitHu
       client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
       client_secret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
       code,
-    }),
+    })
   })
 
   // => Convertendo os dados para JSON
@@ -28,5 +28,6 @@ export async function oAuthByCode({ code }: oAuthByCodeProps): Promise<AuthGitHu
     throw new Error('Não foi possível realizar a autenticação')
   }
 
+  // => Dos dados recebidos, enviamos apenas o Access-Token
   return res.access_token
 }
