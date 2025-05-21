@@ -53,7 +53,7 @@ export default function UserGitHubCard({ gitHubUser, langs }: UserGitHubCardProp
 
   return (
     <Card className="w-full h-full shadow-md rounded-none">
-      <div className="p-6 flex gap-5">
+      <div className="p-6 flex flex-col gap-5">
         <Avatar className="h-24 w-24 border-2 border-white shadow-lg">
           <AvatarImage src={avatar_url} alt={name || login} />
           <AvatarFallback>{(name || login)?.[0]}</AvatarFallback>
