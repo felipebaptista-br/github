@@ -9,9 +9,16 @@ import {
   CardHeader,
   CardContent
 } from "@/components/ui/card"
-import { GitHubUserRepo } from "@/@types/repositories"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { formatDistanceToNow } from "date-fns"
-// import { Button } from "@/components/ui/button"
+import { GitHubUserRepo } from "@/@types/repositories"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ptBR } from "date-fns/locale"
 
@@ -20,6 +27,7 @@ interface RepoCardProps {
 }
 
 export function RepoCard({ repo }: RepoCardProps) {
+  const router = useRouter()
   const {
     name,
     description,
@@ -43,8 +51,6 @@ export function RepoCard({ repo }: RepoCardProps) {
             {name}
           </a>
         </CardTitle>
-
-        {/* Mantém espaço mesmo sem descrição */}
         <p className={`text-sm text-muted-foreground mt-1 line-clamp-2 min-h-[42px]`}>
           {description || <span className="opacity-0">placeholder</span>}
         </p>
@@ -53,7 +59,9 @@ export function RepoCard({ repo }: RepoCardProps) {
       <CardContent className="flex flex-col justify-between flex-grow space-y-3">
         <div className="space-y-3">
           <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
-            {language && <Badge variant="outline">{language}</Badge>}
+            {language && (
+              <Badge variant="outline">{language}</Badge>
+            )}
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4" /> {stargazers_count}
             </div>
@@ -70,11 +78,25 @@ export function RepoCard({ repo }: RepoCardProps) {
             })}
           </p>
         </div>
-
-        {/* => Temporariamente desativado */}
-        {/* <Button disabled asChild className="w-full mt-auto">
-          <a href={`/explore/repo/${owner.login}/${name}`}>Ver detalhamento</a>
-        </Button> */}
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="w-full flex items-center justify-center">
+                <Button
+                  asChild
+                  disabled
+                  className="w-full mt-auto"
+                  onClick={() => router.push(`/explore/repositories/${name}?username=${owner.login}`)}
+                >
+                  Conhecer
+                </Button>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Temporariamente indisponível
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </CardContent>
     </Card>
   )

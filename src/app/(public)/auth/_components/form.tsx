@@ -1,5 +1,4 @@
 'use client'
-
 import React, {
   useCallback,
   useEffect,
@@ -12,10 +11,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { authByAccessToken } from "../server-actions/auth"
+import { authByAccessToken } from "@/server-actions/auth"
 import { useTokenValidation } from "@/hooks/use-token-validation"
 import { Github, Loader2 } from "lucide-react"
-import { oAuthByCode } from "../server-actions/oauth"
+import { oAuthByCode } from "@/server-actions/oauth"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"

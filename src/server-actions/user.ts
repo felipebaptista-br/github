@@ -11,7 +11,7 @@ export async function getUserByGithubUsername({ username }: getUserByGithubUsern
     method: 'GET',
     cache: 'no-store'
   })
-  
+
   if (!response.ok) {
     throw new Error('Não foi possível realizar a autenticação')
   }

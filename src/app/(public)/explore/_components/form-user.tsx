@@ -1,7 +1,7 @@
 "use client"
 import React, { HTMLAttributes, useState } from "react"
 import { Loader2, MoveLeft, MoveRight } from "lucide-react"
-import { getUserByGithubUsername } from "../server-actions/user"
+import { getUserByGithubUsername } from "@/server-actions/user"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
